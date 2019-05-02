@@ -29,7 +29,7 @@ export default class MultisigEnableStep2 extends React.Component {
         const { isGuardKey } = this.state;
         if (isGuardKey === 'isGuard') {
             return (
-                <div className="MultisigEnableStep2_select-row">
+                <div className="MultisigEnableStep2_select-row no-hover">
                     <img src={images['sign-stellarguard']} alt="guard" />
                     <span>StellarGuard</span>
                 </div>
@@ -38,7 +38,7 @@ export default class MultisigEnableStep2 extends React.Component {
         if (isGuardKey === 'other') {
             return (
                 <div
-                    className="MultisigEnableStep2_select-row">
+                    className="MultisigEnableStep2_select-row no-hover">
                     <img src={images['sign-unknown']} alt="unknown-signer" />
                     <span>Other</span>
                 </div>
@@ -65,11 +65,15 @@ export default class MultisigEnableStep2 extends React.Component {
             inputError: '',
             isUpdated: false,
             isVaultKey: false,
+            isGuardKey: 'noChoosed',
         });
     }
 
     openSelect() {
-        this.setState({ isOpenSelect: !this.state.isOpenSelect });
+        this.setState({
+            isOpenSelect: !this.state.isOpenSelect,
+            isGuardKey: 'noChoosed',
+        });
     }
 
     goBack() {
